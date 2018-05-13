@@ -49,9 +49,9 @@ def show_center(data,code,distance,k):
         for j in range(3):
             subplot(2,2,j+1)
             min=ind[0]
-            for i in range(len(ind)):
-                if distance[ind[i]] < distance[min]:
-                    min=ind[i]
+            for h in range(len(ind)):
+                if distance[ind[h]] < distance[min]:
+                    min=ind[h]
             imshow(data[min].reshape([28,28]))
             distance[min]=99999
             axis('off')

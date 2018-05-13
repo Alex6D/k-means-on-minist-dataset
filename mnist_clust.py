@@ -40,7 +40,25 @@ def show_kmeans(data,code,k):
         savefig("%sth class.png" % str(i+1))
         print ("%sth image saved" %str(i+1))
     show()
-
+    
+def show_center(data,code,distance,k):
+    for i in range(k):
+        ind = where(code==i)[0]
+        figure()
+        gray()
+        for j in range(3):
+            subplot(2,2,j+1)
+            min=ind[0]
+            for i in range(len(ind)):
+                if distance[ind[i]] < distance[min]:
+                    min=ind[i]
+            imshow(data[min].reshape([28,28]))
+            distance[min]=99999
+            axis('off')
+        savefig("%sth class_max.png" % str(i+1))
+        print ("%sth image saved" % str(i+1))
+    show()
+    
 data,num = get_data(number,mnist.train.images,mnist.train.labels,54999)
 print ("Have got %d samples of number:%d" % (num,number))
 code,distance = k_means(data,k)
